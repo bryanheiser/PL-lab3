@@ -10,7 +10,7 @@ object Lab3 extends JsyApplication with Lab3Like {
    * CSCI 3155: Lab 3 
    * <Bryan Heiser>
    * 
-   * Partner: <Your Partner's Name>
+   * Partner: <Joe Los>
    * Collaborators: <Any Collaborators>
    */
 
@@ -228,7 +228,7 @@ object Lab3 extends JsyApplication with Lab3Like {
       case Var(y) => if (y==x) v else e
       case Function(None, y, e1) => if (y==x) e else Function(None, y, substitute(e1, v, x))
       case Function(Some(y1), y2, e1) => if (y1==x || y2==x) e else Function(Some(y1), y2, substitute(e1, v, x))
-      case ConstDecl(y, e1, e2) => if (y==x) e else ConstDecl(y, e1, substitute(e2, e1, y))
+      case ConstDecl(y, e1, e2) => if (y==x)  ConstDecl(y, substitute(e1, v, x), e2) else ConstDecl(y, substitute(e1, v, x), substitute(e2, v, x))
     }
   }
     
